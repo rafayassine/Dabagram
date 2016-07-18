@@ -6,7 +6,7 @@ class PicturesController < ApplicationController
     @picture = Picture.new
   end
 
-  def created
+  def create
     @picture = Picture.new(picture_params)
     if @picture.save
       redirect_to "/"
