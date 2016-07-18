@@ -9,12 +9,13 @@ class PicturesController < ApplicationController
   end
 
   def new
+    @picture = Picture.new
   end
 
   def create
     @picture = Picture.new(picture_params)
     if @picture.save
-      redirect_to @picture, notice: "Yeeeees, it's posted"
+      redirect_to @picture, notice: "Yeeeees, it's posted !"
     else
       render 'new', notice: "Ouups, something went wrong"
     end
@@ -24,9 +25,16 @@ class PicturesController < ApplicationController
   end
 
   def update
+    if @picture.update(picture_params)
+      redirect_to @picture, notice: "Picture updated !"
+    else
+      render 'edit', notice: "Ouups, something went wrong"
+    end
   end
 
   def destroy
+    @picture.destroy
+    redirect_to root_path, notice: "Picture deleted"
   end
 
   private
