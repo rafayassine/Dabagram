@@ -1,17 +1,22 @@
 class PicturesController < ApplicationController
+  before_action :find_picture, only: [:show, :edit, :update, :destroy]
+
   def index
+    @pictures = Picture.all.order("created_at DESC")
+  end
+
+  def show
   end
 
   def new
-    @picture = Picture.new
   end
 
   def create
     @picture = Picture.new(picture_params)
     if @picture.save
-      redirect_to "/"
+      redirect_to @picture, notice: "Yeeeees, it's posted"
     else
-      render 'new'
+      render 'new', notice: "Ouups, something went wrong"
     end
   end
 
