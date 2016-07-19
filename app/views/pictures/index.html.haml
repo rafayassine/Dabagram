@@ -1,5 +1,6 @@
-- @pictures.each do |picture|
-  %h2= link_to picture.title, picture
-  %p= "#{time_ago_in_words(picture.created_at)} ago"
-  %p= truncate(picture.description, length: 100)
-= link_to "Post a picture", new_picture_path
+.container
+  - @pictures.each do |picture|
+    %h2= link_to picture.title, picture
+    %p= "#{time_ago_in_words(picture.created_at)} ago"
+    %p= truncate(picture.description, length: 100)
+  = link_to "Post a picture", new_picture_path
