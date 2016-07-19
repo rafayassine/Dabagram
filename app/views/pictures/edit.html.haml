@@ -4,6 +4,9 @@
       .panel-heading
         %h1.text-center Edit Picture
       .panel-body
+        .current_image
+          %strong.center Righ Now
+          =image_tag @picture.image.url(:medium)
         = render 'form'
         %br
         = link_to 'Back', root_path

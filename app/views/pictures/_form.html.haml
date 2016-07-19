@@ -8,6 +8,8 @@
         - @picture.errors.full_messages.each do |msg|
           %li= msg
   .form-group
+    = f.input :image, as: :file 
+  .form-group
     = f.input :title
   .form-group
     = f.input :description
